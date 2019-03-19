@@ -30,7 +30,9 @@ spec:
         - name: MULTUS_IMAGE
           value: "docker.io/nfvpe/multus:latest"
         - name: LINUX_BRIDGE_IMAGE
-          value: "quay.io/kubevirt/cni-default-plugins"
+          value: "quay.io/kubevirt/cni-default-plugins:latest"
+        - name: KUBEMACPOOL_IMAGE
+          value: "quay.io/schseba/mac-controller:latest"
         - name: WATCH_NAMESPACE
           value: ""
         - name: POD_NAME

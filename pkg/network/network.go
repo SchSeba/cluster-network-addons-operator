@@ -54,6 +54,7 @@ func IsChangeSafe(prev, next *opv1alpha1.NetworkAddonsConfigSpec) error {
 
 	errs = append(errs, changeSafeMultus(prev, next)...)
 	errs = append(errs, changeSafeLinuxBridge(prev, next)...)
+	errs = append(errs, changeSafeKubeMacPool(prev, next)...)
 
 	if len(errs) > 0 {
 		return errors.Errorf("invalid configuration: %v", errs)
@@ -74,6 +75,13 @@ func Render(conf *opv1alpha1.NetworkAddonsConfigSpec, manifestDir string, opensh
 
 	// render Linux Bridge
 	o, err = renderLinuxBridge(conf, manifestDir)
+	if err != nil {
+		return nil, err
+	}
+	objs = append(objs, o...)
+
+	// render kubeMacPool
+	o, err = renderKubeMacPool(conf, manifestDir)
 	if err != nil {
 		return nil, err
 	}

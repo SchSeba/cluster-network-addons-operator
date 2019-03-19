@@ -9,6 +9,7 @@ import (
 type NetworkAddonsConfigSpec struct {
 	Multus      *Multus      `json:"multus,omitempty"`
 	LinuxBridge *LinuxBridge `json:"linuxBridge,omitempty"`
+	KubeMacPool *KubeMacPool `json:"kubeMacPool,omitempty"`
 }
 
 // +k8s:openapi-gen=true
@@ -17,6 +18,11 @@ type Multus struct {
 }
 
 type LinuxBridge struct{}
+
+type KubeMacPool struct {
+	EndPoolRange   string `json:"endPoolRange,omitempty"`
+	StartPoolRange string `json:"startPoolRange,omitempty"`
+}
 
 // NetworkAddonsConfigStatus defines the observed state of NetworkAddonsConfig
 // +k8s:openapi-gen=true

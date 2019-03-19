@@ -13,3 +13,6 @@ spec:
         }
       }]
   linuxBridge: {}
+  kubeMacPool:
+   endPoolRange: "FD:FF:FF:FF:FF:FF"
+   startPoolRange: "02:00:00:00:00:00"
