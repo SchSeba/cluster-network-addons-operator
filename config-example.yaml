@@ -7,7 +7,7 @@ spec:
     delegates: |
       [{
         "type": "flannel",
-        "name": "flannel.1",
+        "name": "cbr0",
         "delegate": {
           "isDefaultGateway": true
         }
